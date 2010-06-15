@@ -1,0 +1,6 @@
+<config>
+  <views>
+    <view backgroundColor="000000" color="ffffff" />
+	<view backgroundColor="ffffff" color="000000" />
+  </views>
+</config>

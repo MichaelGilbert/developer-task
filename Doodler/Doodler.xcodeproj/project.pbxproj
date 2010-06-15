@@ -15,6 +15,8 @@
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28F335F11007B36200424DE2 /* Doodles.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* Doodles.xib */; };
 		66BD709A11C80B2B007B2547 /* DoodlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD709911C80B2B007B2547 /* DoodlesViewController.m */; };
+		66BD70B511C82F7F007B2547 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 66BD70B411C82F7F007B2547 /* config.xml */; };
+		66BD70B811C830AB007B2547 /* ConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD70B711C830AB007B2547 /* ConfigParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,9 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		66BD709811C80B2B007B2547 /* DoodlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoodlesViewController.h; sourceTree = "<group>"; };
 		66BD709911C80B2B007B2547 /* DoodlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodlesViewController.m; sourceTree = "<group>"; };
+		66BD70B411C82F7F007B2547 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
+		66BD70B611C830AB007B2547 /* ConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigParser.h; sourceTree = "<group>"; };
+		66BD70B711C830AB007B2547 /* ConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigParser.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Doodler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Doodler-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +59,8 @@
 				1D3623250D0F684500981E51 /* DoodlerAppDelegate.m */,
 				66BD709811C80B2B007B2547 /* DoodlesViewController.h */,
 				66BD709911C80B2B007B2547 /* DoodlesViewController.m */,
+				66BD70B611C830AB007B2547 /* ConfigParser.h */,
+				66BD70B711C830AB007B2547 /* ConfigParser.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -93,6 +100,7 @@
 				28F335F01007B36200424DE2 /* Doodles.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Doodler-Info.plist */,
+				66BD70B411C82F7F007B2547 /* config.xml */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -158,6 +166,7 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				28F335F11007B36200424DE2 /* Doodles.xib in Resources */,
+				66BD70B511C82F7F007B2547 /* config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +180,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DoodlerAppDelegate.m in Sources */,
 				66BD709A11C80B2B007B2547 /* DoodlesViewController.m in Sources */,
+				66BD70B811C830AB007B2547 /* ConfigParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

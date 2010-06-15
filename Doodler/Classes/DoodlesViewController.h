@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface DoodlesViewController : UIViewController {
-
+	NSArray *doodleViews;
 }
 
 @end
