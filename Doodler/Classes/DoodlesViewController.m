@@ -11,7 +11,7 @@
 
 @implementation DoodlesViewController
 
-@synthesize delegate;
+@synthesize delegate, toolbar;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -36,6 +36,20 @@
 }
 */
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	// Get the configuration from the delegate and make the views
+	NSArray *configuration = [delegate doodlesConfigrationForDoodlesViewController:self];
+	for (NSDictionary *doodleConfig in configuration) {
+		UIView *doodleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height)];
+		[doodleViews addObject:doodleView];
+		[doodleView setBackgroundColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1]];
+		[doodleView release];
+	}
+	
+}
+	
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -54,11 +68,13 @@
 - (void)viewDidUnload {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.toolbar = nil;
 }
 
 
 - (void)dealloc {
+	[toolbar release];
+	[doodleViews release];
     [super dealloc];
 }
 

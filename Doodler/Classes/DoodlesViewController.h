@@ -20,9 +20,12 @@
 @interface DoodlesViewController : UIViewController {
 	id <DoodlesViewControllerDelegate> delegate;
 	
-	NSArray *doodleViews;
+	UIToolbar *toolbar;
+	
+	NSMutableArray *doodleViews;
 }
 
 @property (nonatomic, assign) IBOutlet id <DoodlesViewControllerDelegate> delegate;
+@property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 
 @end
