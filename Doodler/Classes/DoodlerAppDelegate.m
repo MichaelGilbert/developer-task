@@ -31,6 +31,9 @@
 	// If we get the config from somewhere else, deal with this error better than a debug comment!
 	if (NO == success)
 		NSLog(@"Failed to parse config file : %@", error);
+	
+	// Store the configuration - the doodles view controller is going to ask for it
+	configuration = [[parser configuration] copy];
 
 	// Display the window
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
@@ -51,7 +54,14 @@
 - (void)dealloc {
 	[navigationController release];
 	[window release];
+	[configuration release];
 	[super dealloc];
+}
+
+#pragma mark DoodlesViewControllerDelegate methods
+
+- (NSArray *)doodlesConfigrationForDoodlesViewController:(DoodlesViewController *)controller {
+	return [configuration objectForKey:@"views"];
 }
 
 @end

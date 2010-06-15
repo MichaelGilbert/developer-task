@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DoodlerAppDelegate : NSObject <UIApplicationDelegate> {
+#import "DoodlesViewController.h"
+
+@interface DoodlerAppDelegate : NSObject <UIApplicationDelegate, DoodlesViewControllerDelegate> {
     
     UIWindow *window;
     UINavigationController *navigationController;
+	
+	NSDictionary *configuration;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
