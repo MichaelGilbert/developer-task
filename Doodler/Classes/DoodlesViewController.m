@@ -40,15 +40,21 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	// Get the configuration from the delegate and make the views
-	NSArray *configuration = [delegate doodlesConfigrationForDoodlesViewController:self];
+	// Get the configuration from the delegate if we don't already have it
+	if (nil == configuration)
+		configuration = [[delegate doodlesConfigrationForDoodlesViewController:self] copy];
+		
+	// Create the views from the configuration
+	doodleViews = [[NSMutableArray alloc] init];
 	for (NSDictionary *doodleConfig in configuration) {
 		UIView *doodleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height)];
 		[doodleViews addObject:doodleView];
 		[doodleView setBackgroundColor:[UIColor colorWithHexString:[doodleConfig objectForKey:@"backgroundColor"]]];
 		[doodleView release];
 	}
-	
+		
+	// Show the view we were last on
+	[self.view addSubview:[doodleViews objectAtIndex:currentViewIndex]];
 }
 	
 /*

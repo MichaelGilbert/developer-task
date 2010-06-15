@@ -22,7 +22,10 @@
 	
 	UIToolbar *toolbar;
 	
+	NSDictionary *configuration;
+	
 	NSMutableArray *doodleViews;
+	NSUInteger currentViewIndex;
 }
 
 @property (nonatomic, assign) IBOutlet id <DoodlesViewControllerDelegate> delegate;
