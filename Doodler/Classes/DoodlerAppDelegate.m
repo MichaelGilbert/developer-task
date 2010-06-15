@@ -20,14 +20,20 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
 	
-	// Parse the configuration - not big so don't need to background thread it (yet?)
+	// Parse the configuration file - not big so don't need to background thread it (yet?)
 	NSURL *configURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"config" ofType:@"xml"]];
 	ConfigParser *parser = [[[ConfigParser alloc] init] autorelease];
-	[parser parse:configURL withError:nil];
+	NSError *error = nil;
+	BOOL success = [parser parse:configURL withError:&error];
+	
+	// We shouldn't fail; it's a local config file we wrote by hand.
+	// If we get the config from somewhere else, deal with this error better than a debug comment!
+	if (NO == success)
+		NSLog(@"Failed to parse config file : %@", error);
 
 	// Display the window
+	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];
 	return YES;

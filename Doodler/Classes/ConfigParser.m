@@ -20,10 +20,9 @@
 
 - (BOOL)parse:(NSURL *)source withError:(NSError **)error {
 	// Parse the xml found in the url provided using ourself as a delegate
-	NSXMLParser *parser = [[NSXMLParser alloc] initWithData:[NSData dataWithContentsOfURL:source]];
+	NSXMLParser *parser = [[[NSXMLParser alloc] initWithData:[NSData dataWithContentsOfURL:source]] autorelease];
 	[parser setDelegate:self];
 	BOOL success = [parser parse];
-	[parser release];
 
 	// Make sure that the error parameter is set correctly - definitely nil if we parsed sucessfully!
 	if (error)
