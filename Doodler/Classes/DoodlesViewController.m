@@ -8,6 +8,7 @@
 
 #import "DoodlesViewController.h"
 
+#import "UIColor+colorWithHexString.h"
 
 @implementation DoodlesViewController
 
@@ -44,7 +45,7 @@
 	for (NSDictionary *doodleConfig in configuration) {
 		UIView *doodleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height)];
 		[doodleViews addObject:doodleView];
-		[doodleView setBackgroundColor:[UIColor colorWithRed:1 green:0 blue:0 alpha:1]];
+		[doodleView setBackgroundColor:[UIColor colorWithHexString:[doodleConfig objectForKey:@"backgroundColor"]]];
 		[doodleView release];
 	}
 	
