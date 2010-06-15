@@ -7,7 +7,6 @@
 //
 
 #import "DoodlerAppDelegate.h"
-#import "RootViewController.h"
 
 
 @implementation DoodlerAppDelegate
@@ -20,7 +19,7 @@
 #pragma mark Application lifecycle
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
-    // Override point for customization after app launch    
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 	
 	[window addSubview:[navigationController view]];
     [window makeKeyAndVisible];

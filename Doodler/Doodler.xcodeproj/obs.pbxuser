@@ -10,6 +10,9 @@
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 66BD707611C809C5007B2547 /* Doodler */;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* Doodler */;
+		addToTargets = (
+			1D6058900D05DD3D006BFB54 /* Doodler */,
+		);
 		codeSenseManager = 66BD708C11C809C8007B2547 /* Code sense */;
 		executables = (
 			66BD707611C809C5007B2547 /* Doodler */,
@@ -60,6 +63,7 @@
 		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
