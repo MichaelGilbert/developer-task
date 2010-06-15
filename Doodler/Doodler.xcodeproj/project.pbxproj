@@ -17,6 +17,7 @@
 		66BD709A11C80B2B007B2547 /* DoodlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD709911C80B2B007B2547 /* DoodlesViewController.m */; };
 		66BD70B511C82F7F007B2547 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 66BD70B411C82F7F007B2547 /* config.xml */; };
 		66BD70B811C830AB007B2547 /* ConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD70B711C830AB007B2547 /* ConfigParser.m */; };
+		66BD715711C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		66BD70B411C82F7F007B2547 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
 		66BD70B611C830AB007B2547 /* ConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigParser.h; sourceTree = "<group>"; };
 		66BD70B711C830AB007B2547 /* ConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigParser.m; sourceTree = "<group>"; };
+		66BD715511C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+setObjectIfNotNil.h"; sourceTree = "<group>"; };
+		66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+setObjectIfNotNil.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Doodler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Doodler-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -76,6 +79,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				66BD715411C838AB007B2547 /* utils */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -113,6 +117,16 @@
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		66BD715411C838AB007B2547 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				66BD715511C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.h */,
+				66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */,
+			);
+			name = utils;
+			path = Classes/utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +195,7 @@
 				1D3623260D0F684500981E51 /* DoodlerAppDelegate.m in Sources */,
 				66BD709A11C80B2B007B2547 /* DoodlesViewController.m in Sources */,
 				66BD70B811C830AB007B2547 /* ConfigParser.m in Sources */,
+				66BD715711C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "ConfigParser.h"
 
+#import "NSMutableDictionary+setObjectIfNotNil.h"
 
 @implementation ConfigParser
 
@@ -48,8 +49,8 @@
 		// Add the specified view to the views array
 		NSMutableArray *views = [configuration objectForKey:@"views"];
 		NSMutableDictionary *view = [NSMutableDictionary dictionaryWithCapacity:2];
-		[view setObject:[attributeDict objectForKey:@"backgroundColor"] forKey:@"backgroundColor"];
-		[view setObject:[attributeDict objectForKey:@"color"] forKey:@"color"];
+		[view setObjectIfNotNil:[attributeDict objectForKey:@"backgroundColor"] forKey:@"backgroundColor"];
+		[view setObjectIfNotNil:[attributeDict objectForKey:@"color"] forKey:@"color"];
 		[views addObject:view];
 	}
 	

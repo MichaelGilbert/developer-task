@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface ConfigParser : NSObject {
 	NSMutableDictionary *configuration;
 }
