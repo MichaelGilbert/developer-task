@@ -1,6 +1,6 @@
 <config>
   <views>
-    <view backgroundColor="000000" color="ffffff" />
+    <view backgroundColor="00ff00" color="ffffff" />
 	<view backgroundColor="0xffffff" color="0x000000" />
   </views>
 </config>

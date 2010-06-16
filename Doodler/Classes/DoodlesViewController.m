@@ -1,4 +1,4 @@
-    //
+//
 //  DoodlesViewController.m
 //  Doodler
 //
@@ -47,14 +47,23 @@
 	// Create the views from the configuration
 	doodleViews = [[NSMutableArray alloc] init];
 	for (NSDictionary *doodleConfig in configuration) {
-		UIView *doodleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height)];
-		[doodleViews addObject:doodleView];
-		[doodleView setBackgroundColor:[UIColor colorWithHexString:[doodleConfig objectForKey:@"backgroundColor"]]];
-		[doodleView release];
-	}
+		CGRect doodleRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height);
 		
+		// Make the view for this doodle
+		UIImageView *doodleView = [[[UIImageView alloc] initWithFrame:doodleRect] autorelease];
+		[doodleViews addObject:doodleView];
+		
+		// Make an image with the correct background color
+		UIGraphicsBeginImageContext(doodleRect.size);
+		CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), [[UIColor colorWithHexString:[doodleConfig objectForKey:@"backgroundColor"]] CGColor]);
+		CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, doodleRect.size.width, doodleRect.size.height));
+		doodleView.image = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+	}
+
 	// Show the view we were last on
-	[self.view addSubview:[doodleViews objectAtIndex:currentViewIndex]];
+	if (NULL == currentDoodle) currentDoodle = [doodleViews objectAtIndex:0];
+	[self.view addSubview:currentDoodle];
 }
 	
 /*

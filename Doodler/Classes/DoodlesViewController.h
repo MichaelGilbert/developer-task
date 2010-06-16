@@ -25,7 +25,7 @@
 	NSDictionary *configuration;
 	
 	NSMutableArray *doodleViews;
-	NSUInteger currentViewIndex;
+	UIImageView *currentDoodle;
 }
 
 @property (nonatomic, assign) IBOutlet id <DoodlesViewControllerDelegate> delegate;
