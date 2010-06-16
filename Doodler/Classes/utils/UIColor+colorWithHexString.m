@@ -8,23 +8,17 @@
 
 #import "UIColor+colorWithHexString.h"
 
+#import "NSString+hexToFloat.h"
 
 @implementation UIColor (colorWithHexString)
 
 + (id) colorWithHexString:(NSString *)hexString {
-	// Get the int value
-	NSScanner *scanner = [NSScanner scannerWithString:hexString];
-	unsigned intValue = 0x000000;
-	if (NO == [scanner scanHexInt:&intValue])
-		return [UIColor blackColor];
+	CGFloat colors[4] = {1.0,1.0,1.0,1.0};
 	
-	// Get the components
-	uint r = (intValue >> 16) & 0xff;
-	uint g = (intValue >> 8) & 0xff;
-	uint b = (intValue >> 0) & 0xff;
+	[hexString hexToFloatComponents:colors];
 	
 	// Return the color
-	return [UIColor colorWithRed:(r/255.0) green:(g/255.0) blue:(b/255.0) alpha:1.0];
+	return [UIColor colorWithRed:colors[0] green:colors[1] blue:colors[2] alpha:colors[3]];
 }
 
 @end
