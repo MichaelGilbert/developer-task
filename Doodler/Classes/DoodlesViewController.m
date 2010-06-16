@@ -101,7 +101,7 @@
 	return [configurations objectAtIndex:index];
 }
 
-- (void)swapDoodle:(id)sender {
+- (IBAction)swapDoodle:(id)sender {
 	// Get the next doodle
 	uint index = [doodleViews indexOfObject:currentDoodle] + 1;
 	if (index == doodleViews.count) index = 0;
@@ -119,6 +119,18 @@
 	// Update the current doodle pointer
 	[currentDoodle release];
 	currentDoodle = [nextDoodle retain];	
+}
+
+- (IBAction)saveDoodle:(id)sender {
+	UIImageWriteToSavedPhotosAlbum(currentDoodle.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
+	[[[[UIAlertView alloc] initWithTitle:@"Success"
+								 message:@"Your doodle has been saved"
+							    delegate:nil
+					   cancelButtonTitle:@"OK"
+					   otherButtonTitles:nil] autorelease] show];
 }
 
 @end

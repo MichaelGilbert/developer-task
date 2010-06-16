@@ -40,5 +40,6 @@
 @property (nonatomic, retain) IBOutlet UIView *doodleViewContainer;
 
 - (IBAction)swapDoodle:(id)sender;
+- (IBAction)saveDoodle:(id)sender;
 
 @end
