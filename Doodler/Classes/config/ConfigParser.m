@@ -10,6 +10,10 @@
 
 #import "NSMutableDictionary+setObjectIfNotNil.h"
 
+#import "DoodleConfig.h"
+
+#import "UIColor+colorWithHexString.h"
+
 @implementation ConfigParser
 
 @synthesize configuration;
@@ -46,12 +50,16 @@
 		// Create the views array
 		[configuration setObject:[NSMutableArray array] forKey:@"views"];
 	} else if ([elementName isEqualToString:@"view"]) {
-		// Add the specified view to the views array
+		// Get the views array from the config
 		NSMutableArray *views = [configuration objectForKey:@"views"];
-		NSMutableDictionary *view = [NSMutableDictionary dictionaryWithCapacity:2];
-		[view setObjectIfNotNil:[attributeDict objectForKey:@"backgroundColor"] forKey:@"backgroundColor"];
-		[view setObjectIfNotNil:[attributeDict objectForKey:@"color"] forKey:@"color"];
-		[views addObject:view];
+		
+		// If we have got a views array, add a view config to it
+		if (views) {
+			DoodleConfig *config = [[[DoodleConfig alloc] init] autorelease];
+			config.backgroundColor = [UIColor colorWithHexString:[attributeDict objectForKey:@"backgroundColor"]];
+			config.strokeColor = [UIColor colorWithHexString:[attributeDict objectForKey:@"color"]];
+			[views addObject:config];
+		}
 	}
 	
 }

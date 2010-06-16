@@ -16,10 +16,11 @@
 		28F335F11007B36200424DE2 /* Doodles.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* Doodles.xib */; };
 		66BD709A11C80B2B007B2547 /* DoodlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD709911C80B2B007B2547 /* DoodlesViewController.m */; };
 		66BD70B511C82F7F007B2547 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 66BD70B411C82F7F007B2547 /* config.xml */; };
-		66BD70B811C830AB007B2547 /* ConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD70B711C830AB007B2547 /* ConfigParser.m */; };
 		66BD715711C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */; };
 		66BD71C311C83E81007B2547 /* UIColor+colorWithHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD71C211C83E81007B2547 /* UIColor+colorWithHexString.m */; };
 		66BD727911C8C4C3007B2547 /* NSString+hexToComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */; };
+		66BD733911C94B61007B2547 /* ConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD733611C94B61007B2547 /* ConfigParser.m */; };
+		66BD733A11C94B61007B2547 /* DoodleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD733811C94B61007B2547 /* DoodleConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,14 +37,16 @@
 		66BD709811C80B2B007B2547 /* DoodlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoodlesViewController.h; sourceTree = "<group>"; };
 		66BD709911C80B2B007B2547 /* DoodlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodlesViewController.m; sourceTree = "<group>"; };
 		66BD70B411C82F7F007B2547 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
-		66BD70B611C830AB007B2547 /* ConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigParser.h; sourceTree = "<group>"; };
-		66BD70B711C830AB007B2547 /* ConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigParser.m; sourceTree = "<group>"; };
 		66BD715511C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+setObjectIfNotNil.h"; sourceTree = "<group>"; };
 		66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+setObjectIfNotNil.m"; sourceTree = "<group>"; };
 		66BD71C111C83E81007B2547 /* UIColor+colorWithHexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+colorWithHexString.h"; sourceTree = "<group>"; };
 		66BD71C211C83E81007B2547 /* UIColor+colorWithHexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+colorWithHexString.m"; sourceTree = "<group>"; };
 		66BD727711C8C4C3007B2547 /* NSString+hexToComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+hexToComponents.h"; sourceTree = "<group>"; };
 		66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hexToComponents.m"; sourceTree = "<group>"; };
+		66BD733511C94B61007B2547 /* ConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigParser.h; sourceTree = "<group>"; };
+		66BD733611C94B61007B2547 /* ConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigParser.m; sourceTree = "<group>"; };
+		66BD733711C94B61007B2547 /* DoodleConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoodleConfig.h; sourceTree = "<group>"; };
+		66BD733811C94B61007B2547 /* DoodleConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodleConfig.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Doodler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Doodler-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,12 +67,11 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				66BD732911C94B2C007B2547 /* config */,
 				1D3623240D0F684500981E51 /* DoodlerAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DoodlerAppDelegate.m */,
 				66BD709811C80B2B007B2547 /* DoodlesViewController.h */,
 				66BD709911C80B2B007B2547 /* DoodlesViewController.m */,
-				66BD70B611C830AB007B2547 /* ConfigParser.h */,
-				66BD70B711C830AB007B2547 /* ConfigParser.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -139,6 +141,17 @@
 			path = Classes/utils;
 			sourceTree = "<group>";
 		};
+		66BD732911C94B2C007B2547 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				66BD733511C94B61007B2547 /* ConfigParser.h */,
+				66BD733611C94B61007B2547 /* ConfigParser.m */,
+				66BD733711C94B61007B2547 /* DoodleConfig.h */,
+				66BD733811C94B61007B2547 /* DoodleConfig.m */,
+			);
+			path = config;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,10 +217,11 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DoodlerAppDelegate.m in Sources */,
 				66BD709A11C80B2B007B2547 /* DoodlesViewController.m in Sources */,
-				66BD70B811C830AB007B2547 /* ConfigParser.m in Sources */,
 				66BD715711C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m in Sources */,
 				66BD71C311C83E81007B2547 /* UIColor+colorWithHexString.m in Sources */,
 				66BD727911C8C4C3007B2547 /* NSString+hexToComponents.m in Sources */,
+				66BD733911C94B61007B2547 /* ConfigParser.m in Sources */,
+				66BD733A11C94B61007B2547 /* DoodleConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

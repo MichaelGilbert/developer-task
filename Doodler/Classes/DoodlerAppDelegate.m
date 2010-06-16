@@ -60,7 +60,7 @@
 
 #pragma mark DoodlesViewControllerDelegate methods
 
-- (NSArray *)doodlesConfigrationForDoodlesViewController:(DoodlesViewController *)controller {
+- (NSArray *)doodlesConfigrationsForDoodlesViewController:(DoodlesViewController *)controller {
 	return [configuration objectForKey:@"views"];
 }
 

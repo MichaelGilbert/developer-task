@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DoodleConfig.h"
+
 @class DoodlesViewController;
 
 @protocol DoodlesViewControllerDelegate
 
-- (NSArray *)doodlesConfigrationForDoodlesViewController:(DoodlesViewController *)controller;
+- (NSArray *)doodlesConfigrationsForDoodlesViewController:(DoodlesViewController *)controller;
 
 @end
 
@@ -22,10 +24,11 @@
 	
 	UIToolbar *toolbar;
 	
-	NSDictionary *configuration;
-	
+	NSArray *configurations;
 	NSMutableArray *doodleViews;
+	
 	UIImageView *currentDoodle;
+	DoodleConfig *currentConfig;
 }
 
 @property (nonatomic, assign) IBOutlet id <DoodlesViewControllerDelegate> delegate;

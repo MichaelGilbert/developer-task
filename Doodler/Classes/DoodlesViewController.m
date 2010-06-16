@@ -8,8 +8,6 @@
 
 #import "DoodlesViewController.h"
 
-#import "UIColor+colorWithHexString.h"
-
 @implementation DoodlesViewController
 
 @synthesize delegate, toolbar;
@@ -41,13 +39,13 @@
 	[super viewWillAppear:animated];
 	
 	// Get the configuration from the delegate if we don't already have it
-	if (nil == configuration)
-		configuration = [[delegate doodlesConfigrationForDoodlesViewController:self] copy];
+	if (nil == configurations)
+		configurations = [[delegate doodlesConfigrationsForDoodlesViewController:self] copy];
 		
 	// Create the views from the configuration if we don't already have any
 	if (nil == doodleViews) {
 		doodleViews = [[NSMutableArray alloc] init];
-		for (NSDictionary *doodleConfig in configuration) {
+		for (DoodleConfig *doodleConfig in configurations) {
 			CGRect doodleRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height);
 			
 			// Make the view for this doodle
@@ -56,18 +54,23 @@
 			
 			// Make an image with the correct background color
 			UIGraphicsBeginImageContext(doodleRect.size);
-			CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), [[UIColor colorWithHexString:[doodleConfig objectForKey:@"backgroundColor"]] CGColor]);
+			CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), [[doodleConfig backgroundColor] CGColor]);
 			CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, doodleRect.size.width, doodleRect.size.height));
 			doodleView.image = UIGraphicsGetImageFromCurrentImageContext();
 			UIGraphicsEndImageContext();
 		}
 	}
 
-	// Show the view we were last on
-	if (NULL == currentDoodle) currentDoodle = [doodleViews objectAtIndex:0];
+	// If we don't yet have a current view, use the first one
+	if (NULL == currentDoodle) {
+		currentDoodle = [[doodleViews objectAtIndex:0] retain];
+		currentConfig = [[configurations objectAtIndex:0] retain];
+	}
+	
+	// Add the current doodle view to the ui
 	[self.view addSubview:currentDoodle];
 }
-	
+
 /*
 // Override to allow orientations other than the default portrait orientation.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -91,9 +94,18 @@
 
 
 - (void)dealloc {
+	[currentDoodle release];
+	[currentConfig release];
 	[toolbar release];
 	[doodleViews release];
     [super dealloc];
+}
+
+- (DoodleConfig *) getConfigurationForDoodle:(UIImageView *)doodle {
+	uint index = [doodleViews indexOfObject:doodle];
+	if (NSNotFound == index) return [NSDictionary dictionary];
+	
+	return [configurations objectAtIndex:index];
 }
 
 #pragma mark -
@@ -118,7 +130,7 @@
 		// We want pretty lines
 		CGContextSetLineCap(context, kCGLineCapRound);
 		CGContextSetLineWidth(context, 2);
-		CGContextSetRGBStrokeColor(context, 1, 0, 0, 1);
+		CGContextSetStrokeColorWithColor(context, currentConfig.strokeColor.CGColor);
 		
 		// Draw the line
 		CGContextBeginPath(context);
@@ -139,3 +151,4 @@
 }
 
 @end
+
