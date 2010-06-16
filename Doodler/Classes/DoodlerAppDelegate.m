@@ -13,7 +13,7 @@
 @implementation DoodlerAppDelegate
 
 @synthesize window=window_;
-@synthesize navigationController=navigationController_;
+@synthesize doodlesViewController=doodlesViewController_;
 
 
 #pragma mark -
@@ -37,8 +37,7 @@
 	configuration_ = [[parser configuration] copy];
 
 	// Display the window
-	[self.navigationController setNavigationBarHidden:YES animated:NO];
-	[window_ addSubview:[navigationController_ view]];
+	[window_ addSubview:[doodlesViewController_ view]];
     [window_ makeKeyAndVisible];
 	return YES;
 }
@@ -53,7 +52,7 @@
 #pragma mark Memory management
 
 - (void)dealloc {
-	[navigationController_ release];
+	[doodlesViewController_ release];
 	[window_ release];
 	[configuration_ release];
 	[super dealloc];

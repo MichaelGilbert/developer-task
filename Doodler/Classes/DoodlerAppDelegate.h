@@ -13,13 +13,13 @@
 @interface DoodlerAppDelegate : NSObject <UIApplicationDelegate, DoodlesViewControllerDelegate> {
     
     UIWindow *window_;
-    UINavigationController *navigationController_;
+	DoodlesViewController *doodlesViewController_;
 	
 	NSDictionary *configuration_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+@property (nonatomic, retain) IBOutlet DoodlesViewController *doodlesViewController;
 
 @end
 
