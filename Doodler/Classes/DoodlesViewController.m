@@ -94,5 +94,46 @@
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark Touch handling methods
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	UITouch *touch = [touches anyObject];
+	CGPoint point = [touch locationInView:currentDoodle];
+	
+	// If it's on the doodle image, render it as a line
+	if (CGRectContainsPoint(currentDoodle.bounds, point)) {
+		CGPoint lastPoint = [touch previousLocationInView:currentDoodle];
+		
+		// Create an image context with the current contents of the doodle
+		UIGraphicsBeginImageContext(currentDoodle.frame.size);
+		[currentDoodle.image drawInRect:currentDoodle.bounds];
+		CGContextRef context = UIGraphicsGetCurrentContext();
+		
+		// We want pretty lines
+		CGContextSetLineCap(context, kCGLineCapRound);
+		CGContextSetLineWidth(context, 2);
+		CGContextSetRGBStrokeColor(context, 1, 0, 0, 1);
+		
+		// Draw the line
+		CGContextBeginPath(context);
+		CGContextMoveToPoint(context, lastPoint.x, lastPoint.y);
+		CGContextAddLineToPoint(context, point.x, point.y);
+		CGContextStrokePath(context);
+		
+		// Store it and end the context
+		currentDoodle.image = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+	}
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+}
 
 @end
