@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface UIColor (colorWithHexString)
+@interface UIColor (ColorWithHexString)
 
 + (id)colorWithHexString:(NSString *)hexString;
 

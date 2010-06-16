@@ -6,11 +6,11 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "UIColor+colorWithHexString.h"
+#import "UIColor+ColorWithHexString.h"
 
-#import "NSString+hexToFloat.h"
+#import "NSString+HexToComponents.h"
 
-@implementation UIColor (colorWithHexString)
+@implementation UIColor (ColorWithHexString)
 
 + (id) colorWithHexString:(NSString *)hexString {
 	CGFloat colors[4] = {1.0,1.0,1.0,1.0};

@@ -16,9 +16,8 @@
 		28F335F11007B36200424DE2 /* Doodles.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F335F01007B36200424DE2 /* Doodles.xib */; };
 		66BD709A11C80B2B007B2547 /* DoodlesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD709911C80B2B007B2547 /* DoodlesViewController.m */; };
 		66BD70B511C82F7F007B2547 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 66BD70B411C82F7F007B2547 /* config.xml */; };
-		66BD715711C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */; };
-		66BD71C311C83E81007B2547 /* UIColor+colorWithHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD71C211C83E81007B2547 /* UIColor+colorWithHexString.m */; };
-		66BD727911C8C4C3007B2547 /* NSString+hexToComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */; };
+		66BD71C311C83E81007B2547 /* UIColor+ColorWithHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD71C211C83E81007B2547 /* UIColor+ColorWithHexString.m */; };
+		66BD727911C8C4C3007B2547 /* NSString+HexToComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD727811C8C4C3007B2547 /* NSString+HexToComponents.m */; };
 		66BD733911C94B61007B2547 /* ConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD733611C94B61007B2547 /* ConfigParser.m */; };
 		66BD733A11C94B61007B2547 /* DoodleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD733811C94B61007B2547 /* DoodleConfig.m */; };
 		66BD73AF11C95434007B2547 /* DoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD73AE11C95434007B2547 /* DoodleView.m */; };
@@ -38,12 +37,10 @@
 		66BD709811C80B2B007B2547 /* DoodlesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoodlesViewController.h; sourceTree = "<group>"; };
 		66BD709911C80B2B007B2547 /* DoodlesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodlesViewController.m; sourceTree = "<group>"; };
 		66BD70B411C82F7F007B2547 /* config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = config.xml; sourceTree = "<group>"; };
-		66BD715511C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+setObjectIfNotNil.h"; sourceTree = "<group>"; };
-		66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+setObjectIfNotNil.m"; sourceTree = "<group>"; };
-		66BD71C111C83E81007B2547 /* UIColor+colorWithHexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+colorWithHexString.h"; sourceTree = "<group>"; };
-		66BD71C211C83E81007B2547 /* UIColor+colorWithHexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+colorWithHexString.m"; sourceTree = "<group>"; };
-		66BD727711C8C4C3007B2547 /* NSString+hexToComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+hexToComponents.h"; sourceTree = "<group>"; };
-		66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hexToComponents.m"; sourceTree = "<group>"; };
+		66BD71C111C83E81007B2547 /* UIColor+ColorWithHexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+ColorWithHexString.h"; sourceTree = "<group>"; };
+		66BD71C211C83E81007B2547 /* UIColor+ColorWithHexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+ColorWithHexString.m"; sourceTree = "<group>"; };
+		66BD727711C8C4C3007B2547 /* NSString+HexToComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+HexToComponents.h"; sourceTree = "<group>"; };
+		66BD727811C8C4C3007B2547 /* NSString+HexToComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+HexToComponents.m"; sourceTree = "<group>"; };
 		66BD733511C94B61007B2547 /* ConfigParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigParser.h; sourceTree = "<group>"; };
 		66BD733611C94B61007B2547 /* ConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigParser.m; sourceTree = "<group>"; };
 		66BD733711C94B61007B2547 /* DoodleConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoodleConfig.h; sourceTree = "<group>"; };
@@ -134,12 +131,10 @@
 		66BD715411C838AB007B2547 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				66BD715511C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.h */,
-				66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */,
-				66BD71C111C83E81007B2547 /* UIColor+colorWithHexString.h */,
-				66BD71C211C83E81007B2547 /* UIColor+colorWithHexString.m */,
-				66BD727711C8C4C3007B2547 /* NSString+hexToComponents.h */,
-				66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */,
+				66BD71C111C83E81007B2547 /* UIColor+ColorWithHexString.h */,
+				66BD71C211C83E81007B2547 /* UIColor+ColorWithHexString.m */,
+				66BD727711C8C4C3007B2547 /* NSString+HexToComponents.h */,
+				66BD727811C8C4C3007B2547 /* NSString+HexToComponents.m */,
 			);
 			name = utils;
 			path = Classes/utils;
@@ -230,9 +225,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* DoodlerAppDelegate.m in Sources */,
 				66BD709A11C80B2B007B2547 /* DoodlesViewController.m in Sources */,
-				66BD715711C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m in Sources */,
-				66BD71C311C83E81007B2547 /* UIColor+colorWithHexString.m in Sources */,
-				66BD727911C8C4C3007B2547 /* NSString+hexToComponents.m in Sources */,
+				66BD71C311C83E81007B2547 /* UIColor+ColorWithHexString.m in Sources */,
+				66BD727911C8C4C3007B2547 /* NSString+HexToComponents.m in Sources */,
 				66BD733911C94B61007B2547 /* ConfigParser.m in Sources */,
 				66BD733A11C94B61007B2547 /* DoodleConfig.m in Sources */,
 				66BD73AF11C95434007B2547 /* DoodleView.m in Sources */,

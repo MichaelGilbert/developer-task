@@ -8,11 +8,9 @@
 
 #import "ConfigParser.h"
 
-#import "NSMutableDictionary+setObjectIfNotNil.h"
-
 #import "DoodleConfig.h"
 
-#import "UIColor+colorWithHexString.h"
+#import "UIColor+ColorWithHexString.h"
 
 @implementation ConfigParser
 
