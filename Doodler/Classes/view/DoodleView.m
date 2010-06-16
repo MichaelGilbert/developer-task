@@ -54,6 +54,11 @@
 	return config;
 }
 
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+	[super willMoveToSuperview:newSuperview];
+	[self image];
+}
+
 #pragma mark -
 #pragma mark Touch methods
 
