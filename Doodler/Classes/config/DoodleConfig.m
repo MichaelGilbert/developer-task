@@ -11,7 +11,7 @@
 
 @implementation DoodleConfig
 
-@synthesize strokeColor, backgroundColor;
+@synthesize backgroundColor, strokeColor;
 
 - (id)init {
 	if (self = [super init]) {
@@ -23,6 +23,18 @@
 	[strokeColor release];
 	[backgroundColor release];
 	[super dealloc];
+}
+
+- (UIColor *)backgroundColor {
+	if (nil == backgroundColor)
+		backgroundColor = [[UIColor blackColor] retain];
+	return backgroundColor;
+}
+
+- (UIColor *)strokeColor {
+	if (nil == strokeColor)
+		strokeColor = [[UIColor whiteColor] retain];
+	return strokeColor;
 }
 
 @end

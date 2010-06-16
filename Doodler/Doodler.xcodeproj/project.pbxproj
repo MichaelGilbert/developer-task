@@ -21,6 +21,7 @@
 		66BD727911C8C4C3007B2547 /* NSString+hexToComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */; };
 		66BD733911C94B61007B2547 /* ConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD733611C94B61007B2547 /* ConfigParser.m */; };
 		66BD733A11C94B61007B2547 /* DoodleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD733811C94B61007B2547 /* DoodleConfig.m */; };
+		66BD73AF11C95434007B2547 /* DoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD73AE11C95434007B2547 /* DoodleView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		66BD733611C94B61007B2547 /* ConfigParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigParser.m; sourceTree = "<group>"; };
 		66BD733711C94B61007B2547 /* DoodleConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoodleConfig.h; sourceTree = "<group>"; };
 		66BD733811C94B61007B2547 /* DoodleConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodleConfig.m; sourceTree = "<group>"; };
+		66BD73AD11C95434007B2547 /* DoodleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoodleView.h; sourceTree = "<group>"; };
+		66BD73AE11C95434007B2547 /* DoodleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodleView.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Doodler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Doodler-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -67,6 +70,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				66BD73AC11C95406007B2547 /* view */,
 				66BD732911C94B2C007B2547 /* config */,
 				1D3623240D0F684500981E51 /* DoodlerAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DoodlerAppDelegate.m */,
@@ -152,6 +156,15 @@
 			path = config;
 			sourceTree = "<group>";
 		};
+		66BD73AC11C95406007B2547 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				66BD73AD11C95434007B2547 /* DoodleView.h */,
+				66BD73AE11C95434007B2547 /* DoodleView.m */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -222,6 +235,7 @@
 				66BD727911C8C4C3007B2547 /* NSString+hexToComponents.m in Sources */,
 				66BD733911C94B61007B2547 /* ConfigParser.m in Sources */,
 				66BD733A11C94B61007B2547 /* DoodleConfig.m in Sources */,
+				66BD73AF11C95434007B2547 /* DoodleView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

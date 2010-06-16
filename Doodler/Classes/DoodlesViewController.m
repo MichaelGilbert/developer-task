@@ -8,6 +8,8 @@
 
 #import "DoodlesViewController.h"
 
+#import "DoodleView.h"
+
 @implementation DoodlesViewController
 
 @synthesize delegate, toolbar;
@@ -49,15 +51,9 @@
 			CGRect doodleRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height);
 			
 			// Make the view for this doodle
-			UIImageView *doodleView = [[[UIImageView alloc] initWithFrame:doodleRect] autorelease];
+			DoodleView *doodleView = [[[DoodleView alloc] initWithFrame:doodleRect] autorelease];
+			doodleView.config = doodleConfig;
 			[doodleViews addObject:doodleView];
-			
-			// Make an image with the correct background color
-			UIGraphicsBeginImageContext(doodleRect.size);
-			CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), [[doodleConfig backgroundColor] CGColor]);
-			CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, doodleRect.size.width, doodleRect.size.height));
-			doodleView.image = UIGraphicsGetImageFromCurrentImageContext();
-			UIGraphicsEndImageContext();
 		}
 	}
 
@@ -106,59 +102,6 @@
 	if (NSNotFound == index) return [NSDictionary dictionary];
 	
 	return [configurations objectAtIndex:index];
-}
-
-#pragma mark -
-#pragma mark Touch handling & line drawing methods
-
-- (void) drawLineFrom:(CGPoint)src to:(CGPoint)dst {
-	// Create an image context with the current contents of the doodle
-	UIGraphicsBeginImageContext(currentDoodle.frame.size);
-	[currentDoodle.image drawInRect:currentDoodle.bounds];
-	CGContextRef context = UIGraphicsGetCurrentContext();
-	
-	// We want pretty lines
-	CGContextSetLineCap(context, kCGLineCapRound);
-	CGContextSetLineWidth(context, 2);
-	CGContextSetStrokeColorWithColor(context, currentConfig.strokeColor.CGColor);
-	
-	// Draw the line
-	CGContextBeginPath(context);
-	CGContextMoveToPoint(context, src.x, src.y);
-	CGContextAddLineToPoint(context, dst.x, dst.y);
-	CGContextStrokePath(context);
-	
-	// Store it and end the context
-	currentDoodle.image = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	touchNeedsDot = YES;
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	UITouch *touch = [touches anyObject];
-	CGPoint point = [touch locationInView:currentDoodle];
-	
-	// If it's on the doodle image, render it as a line
-	if (CGRectContainsPoint(currentDoodle.bounds, point)) {
-		CGPoint lastPoint = [touch previousLocationInView:currentDoodle];
-		
-		[self drawLineFrom:lastPoint to:point];
-		
-		touchNeedsDot = NO;
-	}
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (touchNeedsDot) {
-		CGPoint point = [[touches anyObject] locationInView:currentDoodle];
-		[self drawLineFrom:point to:point];
-	}
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
 }
 
 @end
