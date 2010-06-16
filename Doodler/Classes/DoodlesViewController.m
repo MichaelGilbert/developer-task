@@ -94,18 +94,13 @@
     [super dealloc];
 }
 
-- (DoodleConfig *) getConfigurationForDoodle:(UIImageView *)doodle {
-	uint index = [doodleViews indexOfObject:doodle];
-	if (NSNotFound == index) return [NSDictionary dictionary];
-	
-	return [configurations objectAtIndex:index];
-}
-
 - (IBAction)swapDoodle:(id)sender {
+	// You can't swap doodles i we only have one
+	if (doodleViews.count < 2) return;
+	
 	// Get the next doodle
 	uint index = [doodleViews indexOfObject:currentDoodle] + 1;
 	if (index == doodleViews.count) index = 0;
-	
 	DoodleView *nextDoodle = [doodleViews objectAtIndex:index];
 
 	// Change the doodle
