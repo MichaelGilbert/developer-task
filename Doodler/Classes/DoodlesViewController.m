@@ -44,21 +44,23 @@
 	if (nil == configuration)
 		configuration = [[delegate doodlesConfigrationForDoodlesViewController:self] copy];
 		
-	// Create the views from the configuration
-	doodleViews = [[NSMutableArray alloc] init];
-	for (NSDictionary *doodleConfig in configuration) {
-		CGRect doodleRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height);
-		
-		// Make the view for this doodle
-		UIImageView *doodleView = [[[UIImageView alloc] initWithFrame:doodleRect] autorelease];
-		[doodleViews addObject:doodleView];
-		
-		// Make an image with the correct background color
-		UIGraphicsBeginImageContext(doodleRect.size);
-		CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), [[UIColor colorWithHexString:[doodleConfig objectForKey:@"backgroundColor"]] CGColor]);
-		CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, doodleRect.size.width, doodleRect.size.height));
-		doodleView.image = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
+	// Create the views from the configuration if we don't already have any
+	if (nil == doodleViews) {
+		doodleViews = [[NSMutableArray alloc] init];
+		for (NSDictionary *doodleConfig in configuration) {
+			CGRect doodleRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height);
+			
+			// Make the view for this doodle
+			UIImageView *doodleView = [[[UIImageView alloc] initWithFrame:doodleRect] autorelease];
+			[doodleViews addObject:doodleView];
+			
+			// Make an image with the correct background color
+			UIGraphicsBeginImageContext(doodleRect.size);
+			CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), [[UIColor colorWithHexString:[doodleConfig objectForKey:@"backgroundColor"]] CGColor]);
+			CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, doodleRect.size.width, doodleRect.size.height));
+			doodleView.image = UIGraphicsGetImageFromCurrentImageContext();
+			UIGraphicsEndImageContext();
+		}
 	}
 
 	// Show the view we were last on
