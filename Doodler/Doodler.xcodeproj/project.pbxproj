@@ -19,7 +19,7 @@
 		66BD70B811C830AB007B2547 /* ConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD70B711C830AB007B2547 /* ConfigParser.m */; };
 		66BD715711C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */; };
 		66BD71C311C83E81007B2547 /* UIColor+colorWithHexString.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD71C211C83E81007B2547 /* UIColor+colorWithHexString.m */; };
-		66BD727911C8C4C3007B2547 /* NSString+hexToFloat.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD727811C8C4C3007B2547 /* NSString+hexToFloat.m */; };
+		66BD727911C8C4C3007B2547 /* NSString+hexToComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,8 +42,8 @@
 		66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+setObjectIfNotNil.m"; sourceTree = "<group>"; };
 		66BD71C111C83E81007B2547 /* UIColor+colorWithHexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+colorWithHexString.h"; sourceTree = "<group>"; };
 		66BD71C211C83E81007B2547 /* UIColor+colorWithHexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+colorWithHexString.m"; sourceTree = "<group>"; };
-		66BD727711C8C4C3007B2547 /* NSString+hexToFloat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+hexToFloat.h"; sourceTree = "<group>"; };
-		66BD727811C8C4C3007B2547 /* NSString+hexToFloat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hexToFloat.m"; sourceTree = "<group>"; };
+		66BD727711C8C4C3007B2547 /* NSString+hexToComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+hexToComponents.h"; sourceTree = "<group>"; };
+		66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+hexToComponents.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Doodler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Doodler-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,8 +132,8 @@
 				66BD715611C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m */,
 				66BD71C111C83E81007B2547 /* UIColor+colorWithHexString.h */,
 				66BD71C211C83E81007B2547 /* UIColor+colorWithHexString.m */,
-				66BD727711C8C4C3007B2547 /* NSString+hexToFloat.h */,
-				66BD727811C8C4C3007B2547 /* NSString+hexToFloat.m */,
+				66BD727711C8C4C3007B2547 /* NSString+hexToComponents.h */,
+				66BD727811C8C4C3007B2547 /* NSString+hexToComponents.m */,
 			);
 			name = utils;
 			path = Classes/utils;
@@ -207,7 +207,7 @@
 				66BD70B811C830AB007B2547 /* ConfigParser.m in Sources */,
 				66BD715711C838D4007B2547 /* NSMutableDictionary+setObjectIfNotNil.m in Sources */,
 				66BD71C311C83E81007B2547 /* UIColor+colorWithHexString.m in Sources */,
-				66BD727911C8C4C3007B2547 /* NSString+hexToFloat.m in Sources */,
+				66BD727911C8C4C3007B2547 /* NSString+hexToComponents.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

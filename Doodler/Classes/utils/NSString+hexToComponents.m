@@ -6,10 +6,10 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "NSString+hexToFloat.h"
+#import "NSString+hexToComponents.h"
 
 
-@implementation NSString (hexToFloat)
+@implementation NSString (hexToComponents)
 
 - (void)hexToCharComponents:(unsigned char *)charArray {
 	// Get the int value

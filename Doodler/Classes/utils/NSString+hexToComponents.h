@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface NSString (hexToFloat)
+@interface NSString (hexToComponents)
 
 - (void)hexToFloatComponents:(CGFloat *)floatArray;
 - (void)hexToCharComponents:(unsigned char *)charArray;
