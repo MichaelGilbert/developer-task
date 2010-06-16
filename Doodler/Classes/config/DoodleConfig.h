@@ -8,13 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-
+// Represents the configuration for a doodle
 @interface DoodleConfig : NSObject {
-	UIColor *backgroundColor;
-	UIColor *strokeColor;
+	UIColor *backgroundColor_;
+	UIColor *strokeColor_;
 }
 
+// The background color for the doodle. This defaults to black.
+// Setting it to nil will just reset it to the default.
 @property (nonatomic, retain) UIColor *backgroundColor;
+
+// The color the doodle should use when touched. This defaults to white.
+// Setting it to nil will just reset it to the default.
 @property (nonatomic, retain) UIColor *strokeColor;
 
 @end

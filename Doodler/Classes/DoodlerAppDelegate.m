@@ -12,16 +12,17 @@
 
 @implementation DoodlerAppDelegate
 
-@synthesize window;
-@synthesize navigationController;
+@synthesize window=window_;
+@synthesize navigationController=navigationController_;
 
 
 #pragma mark -
 #pragma mark Application lifecycle
 
+// Called when the application is ready to go
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {    
 	
-	// Parse the configuration file - not big so don't need to background thread it (yet?)
+	// Parse the configuration file - not big so don't need to background thread it - KISS
 	NSURL *configURL = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"config" ofType:@"xml"]];
 	ConfigParser *parser = [[[ConfigParser alloc] init] autorelease];
 	NSError *error = nil;
@@ -33,12 +34,12 @@
 		NSLog(@"Failed to parse config file : %@", error);
 	
 	// Store the configuration - the doodles view controller is going to ask for it
-	configuration = [[parser configuration] copy];
+	configuration_ = [[parser configuration] copy];
 
 	// Display the window
 	[self.navigationController setNavigationBarHidden:YES animated:NO];
-	[window addSubview:[navigationController view]];
-    [window makeKeyAndVisible];
+	[window_ addSubview:[navigationController_ view]];
+    [window_ makeKeyAndVisible];
 	return YES;
 }
 
@@ -52,16 +53,16 @@
 #pragma mark Memory management
 
 - (void)dealloc {
-	[navigationController release];
-	[window release];
-	[configuration release];
+	[navigationController_ release];
+	[window_ release];
+	[configuration_ release];
 	[super dealloc];
 }
 
 #pragma mark DoodlesViewControllerDelegate methods
 
 - (NSArray *)doodlesConfigrationsForDoodlesViewController:(DoodlesViewController *)controller {
-	return [configuration objectForKey:@"views"];
+	return [configuration_ objectForKey:@"views"];
 }
 
 @end

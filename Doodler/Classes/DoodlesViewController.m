@@ -12,7 +12,8 @@
 
 @implementation DoodlesViewController
 
-@synthesize delegate, toolbar, doodleViewContainer;
+@synthesize delegate=delegate_, toolbar=toolbar_;
+@synthesize doodleViewContainer=doodleViewContainer_;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -41,26 +42,26 @@
 	[super viewWillAppear:animated];
 	
 	// Get the configuration from the delegate if we don't already have it
-	if (nil == configurations)
-		configurations = [[delegate doodlesConfigrationsForDoodlesViewController:self] copy];
+	if (nil == configurations_)
+		configurations_ = [[delegate_ doodlesConfigrationsForDoodlesViewController:self] copy];
 		
 	// Create the views from the configuration if we don't already have any
-	if (nil == doodleViews) {
-		doodleViews = [[NSMutableArray alloc] init];
-		for (DoodleConfig *doodleConfig in configurations) {
+	if (nil == doodleViews_) {
+		doodleViews_ = [[NSMutableArray alloc] init];
+		for (DoodleConfig *doodleConfig in configurations_) {
 			// Make the view for this doodle
-			DoodleView *doodleView = [[[DoodleView alloc] initWithFrame:doodleViewContainer.frame] autorelease];
+			DoodleView *doodleView = [[[DoodleView alloc] initWithFrame:[doodleViewContainer_ frame]] autorelease];
 			doodleView.config = doodleConfig;
-			[doodleViews addObject:doodleView];
+			[doodleViews_ addObject:doodleView];
 		}
 	}
 
 	// If we don't yet have a current view, use the first one
-	if (NULL == currentDoodle)
-		currentDoodle = [[doodleViews objectAtIndex:0] retain];
+	if (NULL == currentDoodle_)
+		currentDoodle_ = [[doodleViews_ objectAtIndex:0] retain];
 	
 	// Add the current doodle view to the ui
-	[doodleViewContainer addSubview:currentDoodle];
+	[doodleViewContainer_ addSubview:currentDoodle_];
 }
 
 /*
@@ -87,37 +88,37 @@
 
 
 - (void)dealloc {
-	[currentDoodle release];
-	[toolbar release];
-	[doodleViews release];
-	[doodleViewContainer release];
+	[currentDoodle_ release];
+	[toolbar_ release];
+	[doodleViews_ release];
+	[doodleViewContainer_ release];
     [super dealloc];
 }
 
 - (IBAction)swapDoodle:(id)sender {
 	// You can't swap doodles i we only have one
-	if (doodleViews.count < 2) return;
+	if ([doodleViews_ count] < 2) return;
 	
 	// Get the next doodle
-	uint index = [doodleViews indexOfObject:currentDoodle] + 1;
-	if (index == doodleViews.count) index = 0;
-	DoodleView *nextDoodle = [doodleViews objectAtIndex:index];
+	uint index = [doodleViews_ indexOfObject:currentDoodle_] + 1;
+	if (index == [doodleViews_ count]) index = 0;
+	DoodleView *nextDoodle = [doodleViews_ objectAtIndex:index];
 
 	// Change the doodle
 	[UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:0.75];
-	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:doodleViewContainer cache:YES];
-	[doodleViewContainer addSubview:nextDoodle];
-	[currentDoodle removeFromSuperview];
+	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:doodleViewContainer_ cache:YES];
+	[doodleViewContainer_ addSubview:nextDoodle];
+	[currentDoodle_ removeFromSuperview];
 	[UIView commitAnimations];
 	
 	// Update the current doodle pointer
-	[currentDoodle release];
-	currentDoodle = [nextDoodle retain];	
+	[currentDoodle_ autorelease];
+	currentDoodle_ = [nextDoodle retain];	
 }
 
 - (IBAction)saveDoodle:(id)sender {
-	UIImageWriteToSavedPhotosAlbum(currentDoodle.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+	UIImageWriteToSavedPhotosAlbum([currentDoodle_ image], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {

@@ -11,7 +11,7 @@
 
 @implementation DoodleView
 
-@synthesize config;
+@synthesize config=config_;
 
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
@@ -29,7 +29,7 @@
 */
 
 - (void)dealloc {
-	[config release];
+	[config_ release];
     [super dealloc];
 }
 
@@ -37,7 +37,7 @@
 	// If we don't have an image already, use the config to create a black one with the correct background
 	if (nil == super.image) {
 		UIGraphicsBeginImageContext(self.frame.size);
-		CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), config.backgroundColor.CGColor);
+		CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), self.config.backgroundColor.CGColor);
 		CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
 		super.image = UIGraphicsGetImageFromCurrentImageContext();
 		UIGraphicsEndImageContext();
@@ -49,9 +49,9 @@
 }
 
 - (DoodleConfig *)config {
-	if (nil == config)
-		config = [[DoodleConfig alloc] init];
-	return config;
+	if (nil == config_)
+		config_ = [[DoodleConfig alloc] init];
+	return config_;
 }
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
@@ -71,7 +71,7 @@
 	// We want pretty lines
 	CGContextSetLineCap(context, kCGLineCapRound);
 	CGContextSetLineWidth(context, 2);
-	CGContextSetStrokeColorWithColor(context, config.strokeColor.CGColor);
+	CGContextSetStrokeColorWithColor(context, self.config.strokeColor.CGColor);
 	
 	// Draw the line
 	CGContextBeginPath(context);
@@ -85,7 +85,7 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-	touchNeedsDot = YES;
+	touchNeedsDot_ = YES;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -97,11 +97,11 @@
 		
 	[self drawLineFrom:lastPoint to:point];
 	
-	touchNeedsDot = NO;
+	touchNeedsDot_ = NO;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (touchNeedsDot) {
+	if (touchNeedsDot_) {
 		CGPoint point = [[touches anyObject] locationInView:self];
 		[self drawLineFrom:point to:point];
 	}

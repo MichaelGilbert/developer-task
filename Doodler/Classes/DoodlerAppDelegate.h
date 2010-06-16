@@ -12,10 +12,10 @@
 
 @interface DoodlerAppDelegate : NSObject <UIApplicationDelegate, DoodlesViewControllerDelegate> {
     
-    UIWindow *window;
-    UINavigationController *navigationController;
+    UIWindow *window_;
+    UINavigationController *navigationController_;
 	
-	NSDictionary *configuration;
+	NSDictionary *configuration_;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

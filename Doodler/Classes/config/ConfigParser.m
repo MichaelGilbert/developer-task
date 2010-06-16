@@ -14,10 +14,10 @@
 
 @implementation ConfigParser
 
-@synthesize configuration;
+@synthesize configuration=configuration_;
 
 - (void)dealloc {
-	[configuration release];
+	[configuration_ release];
 	[super dealloc];
 }
 
@@ -38,18 +38,18 @@
 #pragma mark NSXMLParserDelegate methods
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
-	[configuration release];
-	configuration = [[NSMutableDictionary alloc] init];
+	[configuration_ release];
+	configuration_ = [[NSMutableDictionary alloc] init];
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	
 	if ([elementName isEqualToString:@"views"]) {
 		// Create the views array
-		[configuration setObject:[NSMutableArray array] forKey:@"views"];
+		[configuration_ setObject:[NSMutableArray array] forKey:@"views"];
 	} else if ([elementName isEqualToString:@"view"]) {
 		// Get the views array from the config
-		NSMutableArray *views = [configuration objectForKey:@"views"];
+		NSMutableArray *views = [configuration_ objectForKey:@"views"];
 		
 		// If we have got a views array, add a view config to it
 		if (views) {
