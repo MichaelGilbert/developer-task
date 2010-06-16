@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DoodleConfig.h"
+#import "DoodleView.h"
 
 @class DoodlesViewController;
 
@@ -27,13 +27,18 @@
 	NSArray *configurations;
 	NSMutableArray *doodleViews;
 	
-	UIImageView *currentDoodle;
-	DoodleConfig *currentConfig;
+	UIView *doodleViewContainer;
+	
+	DoodleView *currentDoodle;
 	
 	BOOL touchNeedsDot;
 }
 
 @property (nonatomic, assign) IBOutlet id <DoodlesViewControllerDelegate> delegate;
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
+
+@property (nonatomic, retain) IBOutlet UIView *doodleViewContainer;
+
+- (IBAction)swapDoodle:(id)sender;
 
 @end

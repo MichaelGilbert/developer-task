@@ -12,7 +12,7 @@
 
 @implementation DoodlesViewController
 
-@synthesize delegate, toolbar;
+@synthesize delegate, toolbar, doodleViewContainer;
 
 /*
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -48,23 +48,19 @@
 	if (nil == doodleViews) {
 		doodleViews = [[NSMutableArray alloc] init];
 		for (DoodleConfig *doodleConfig in configurations) {
-			CGRect doodleRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-toolbar.frame.size.height);
-			
 			// Make the view for this doodle
-			DoodleView *doodleView = [[[DoodleView alloc] initWithFrame:doodleRect] autorelease];
+			DoodleView *doodleView = [[[DoodleView alloc] initWithFrame:doodleViewContainer.frame] autorelease];
 			doodleView.config = doodleConfig;
 			[doodleViews addObject:doodleView];
 		}
 	}
 
 	// If we don't yet have a current view, use the first one
-	if (NULL == currentDoodle) {
+	if (NULL == currentDoodle)
 		currentDoodle = [[doodleViews objectAtIndex:0] retain];
-		currentConfig = [[configurations objectAtIndex:0] retain];
-	}
 	
 	// Add the current doodle view to the ui
-	[self.view addSubview:currentDoodle];
+	[doodleViewContainer addSubview:currentDoodle];
 }
 
 /*
@@ -86,14 +82,15 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     self.toolbar = nil;
+	self.doodleViewContainer = nil;
 }
 
 
 - (void)dealloc {
 	[currentDoodle release];
-	[currentConfig release];
 	[toolbar release];
 	[doodleViews release];
+	[doodleViewContainer release];
     [super dealloc];
 }
 
@@ -102,6 +99,26 @@
 	if (NSNotFound == index) return [NSDictionary dictionary];
 	
 	return [configurations objectAtIndex:index];
+}
+
+- (void)swapDoodle:(id)sender {
+	// Get the next doodle
+	uint index = [doodleViews indexOfObject:currentDoodle] + 1;
+	if (index == doodleViews.count) index = 0;
+	
+	DoodleView *nextDoodle = [doodleViews objectAtIndex:index];
+
+	// Change the doodle
+	[UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.75];
+	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:doodleViewContainer cache:YES];
+	[doodleViewContainer addSubview:nextDoodle];
+	[currentDoodle removeFromSuperview];
+	[UIView commitAnimations];
+	
+	// Update the current doodle pointer
+	[currentDoodle release];
+	currentDoodle = [nextDoodle retain];	
 }
 
 @end
