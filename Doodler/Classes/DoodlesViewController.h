@@ -29,6 +29,8 @@
 	
 	UIImageView *currentDoodle;
 	DoodleConfig *currentConfig;
+	
+	BOOL touchNeedsDot;
 }
 
 @property (nonatomic, assign) IBOutlet id <DoodlesViewControllerDelegate> delegate;

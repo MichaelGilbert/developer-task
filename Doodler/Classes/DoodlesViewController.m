@@ -109,9 +109,32 @@
 }
 
 #pragma mark -
-#pragma mark Touch handling methods
+#pragma mark Touch handling & line drawing methods
+
+- (void) drawLineFrom:(CGPoint)src to:(CGPoint)dst {
+	// Create an image context with the current contents of the doodle
+	UIGraphicsBeginImageContext(currentDoodle.frame.size);
+	[currentDoodle.image drawInRect:currentDoodle.bounds];
+	CGContextRef context = UIGraphicsGetCurrentContext();
+	
+	// We want pretty lines
+	CGContextSetLineCap(context, kCGLineCapRound);
+	CGContextSetLineWidth(context, 2);
+	CGContextSetStrokeColorWithColor(context, currentConfig.strokeColor.CGColor);
+	
+	// Draw the line
+	CGContextBeginPath(context);
+	CGContextMoveToPoint(context, src.x, src.y);
+	CGContextAddLineToPoint(context, dst.x, dst.y);
+	CGContextStrokePath(context);
+	
+	// Store it and end the context
+	currentDoodle.image = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	touchNeedsDot = YES;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -122,29 +145,17 @@
 	if (CGRectContainsPoint(currentDoodle.bounds, point)) {
 		CGPoint lastPoint = [touch previousLocationInView:currentDoodle];
 		
-		// Create an image context with the current contents of the doodle
-		UIGraphicsBeginImageContext(currentDoodle.frame.size);
-		[currentDoodle.image drawInRect:currentDoodle.bounds];
-		CGContextRef context = UIGraphicsGetCurrentContext();
+		[self drawLineFrom:lastPoint to:point];
 		
-		// We want pretty lines
-		CGContextSetLineCap(context, kCGLineCapRound);
-		CGContextSetLineWidth(context, 2);
-		CGContextSetStrokeColorWithColor(context, currentConfig.strokeColor.CGColor);
-		
-		// Draw the line
-		CGContextBeginPath(context);
-		CGContextMoveToPoint(context, lastPoint.x, lastPoint.y);
-		CGContextAddLineToPoint(context, point.x, point.y);
-		CGContextStrokePath(context);
-		
-		// Store it and end the context
-		currentDoodle.image = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
+		touchNeedsDot = NO;
 	}
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+	if (touchNeedsDot) {
+		CGPoint point = [[touches anyObject] locationInView:currentDoodle];
+		[self drawLineFrom:point to:point];
+	}
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
