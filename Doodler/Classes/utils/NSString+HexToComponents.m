@@ -2,7 +2,7 @@
 //  NSString+hexToFloat.m
 //  Doodler
 //
-//  Created by obs on 16/06/2010.
+//  Created by Sam Dean on 16/06/2010.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 

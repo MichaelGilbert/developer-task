@@ -2,7 +2,7 @@
 //  main.m
 //  Doodler
 //
-//  Created by obs on 15/06/2010.
+//  Created by Sam Dean on 15/06/2010.
 //  Copyright __MyCompanyName__ 2010. All rights reserved.
 //
 
