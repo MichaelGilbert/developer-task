@@ -67,7 +67,7 @@
 - (void) drawLineFrom:(CGPoint)src to:(CGPoint)dst {
 	// Create an image context with the current contents of the doodle
 	UIGraphicsBeginImageContext([self frame].size);
-	[self.image drawInRect:[self bounds]];
+	[[self image] drawInRect:[self bounds]];
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	// We want pretty lines
@@ -82,7 +82,7 @@
 	CGContextStrokePath(context);
 	
 	// Store it and end the context
-	self.image = UIGraphicsGetImageFromCurrentImageContext();
+	[self setImage:UIGraphicsGetImageFromCurrentImageContext()];
 	UIGraphicsEndImageContext();
 }
 
