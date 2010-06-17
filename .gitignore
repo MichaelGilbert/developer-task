@@ -3,5 +3,5 @@ Doodler/build
 *.mode1v3
 *.pbxuser
 
-*/.S_Store
+*/.DS_Store
 
