@@ -1,0 +1,13 @@
+Developer task for net-a-porter
+Sam Dean 2010
+
+It's currently using com.oneblacksock.doodler as the package name - you'll probably want to change that in Doodler-Info.plist to run it on an iPhone but it should just compile and run on the simulator as is :)
+
+
+Email sam@oneblacksock.co.uk with questions / comments.
+
+
+
+Thanks,
+
+Sam
