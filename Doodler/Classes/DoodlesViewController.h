@@ -28,16 +28,17 @@
 //
 // The saveDoodle method will save the currently displayed DoodleView to the photo album.
 @interface DoodlesViewController : UIViewController {
-	id <DoodlesViewControllerDelegate> delegate_;
+ @private
+  id <DoodlesViewControllerDelegate> delegate_;
 	
-	UIToolbar *toolbar_;
+  UIToolbar *toolbar_;
 	
-	NSArray *configurations_;
-	NSMutableArray *doodleViews_;
+  NSArray *configurations_;
+  NSMutableArray *doodleViews_;
 	
-	UIView *doodleViewContainer_;
-	
-	DoodleView *currentDoodle_;
+  UIView *doodleViewContainer_;
+
+  DoodleView *currentDoodle_;
 }
 
 @property (nonatomic, assign) IBOutlet id <DoodlesViewControllerDelegate> delegate;

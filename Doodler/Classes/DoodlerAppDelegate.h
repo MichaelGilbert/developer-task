@@ -13,11 +13,11 @@
 // Does everything an app delegate should plus acts as the data source for the
 // DoodlesViewController. It gets the config from XML at application:didFinishLaunchingWithOptions:
 @interface DoodlerAppDelegate : NSObject <UIApplicationDelegate, DoodlesViewControllerDelegate> {
-    
-    UIWindow *window_;
-	DoodlesViewController *doodlesViewController_;
+ @private
+  UIWindow *window_;
+  DoodlesViewController *doodlesViewController_;
 	
-	NSDictionary *configuration_; // Holds the config parsed from XML
+  NSDictionary *configuration_; // Holds the config parsed from XML
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

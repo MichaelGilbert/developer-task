@@ -15,30 +15,30 @@
 @synthesize strokeColor=strokeColor_;
 
 - (id)init {
-	if (self = [super init]) {
-		// Don't allocate defalt values for the background and stroke colors here. Chances are that
-		// they will be set very soon so we might as well wait until they are asked for to see if
-		// we need a default value
-	}
-	return self;
+  if (self = [super init]) {
+    // Don't allocate defalt values for the background and stroke colors here. Chances are that
+    // they will be set very soon so we might as well wait until they are asked for to see if
+    // we need a default value
+  }
+  return self;
 }
 
 - (void) dealloc {
-	[strokeColor_ release];
-	[backgroundColor_ release];
-	[super dealloc];
+  [strokeColor_ release];
+  [backgroundColor_ release];
+  [super dealloc];
 }
 
 - (UIColor *)backgroundColor {
-	if (nil == backgroundColor_)
-		backgroundColor_ = [[UIColor blackColor] retain];
-	return backgroundColor_;
+  if (nil == backgroundColor_)
+    backgroundColor_ = [[UIColor blackColor] retain];
+  return backgroundColor_;
 }
 
 - (UIColor *)strokeColor {
-	if (nil == strokeColor_)
-		strokeColor_ = [[UIColor whiteColor] retain];
-	return strokeColor_;
+  if (nil == strokeColor_)
+    strokeColor_ = [[UIColor whiteColor] retain];
+  return strokeColor_;
 }
 
 @end

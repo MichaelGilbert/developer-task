@@ -10,8 +10,9 @@
 
 // Represents the configuration for a doodle
 @interface DoodleConfig : NSObject {
-	UIColor *backgroundColor_;
-	UIColor *strokeColor_;
+ @private
+  UIColor *backgroundColor_;
+  UIColor *strokeColor_;
 }
 
 // The background color for the doodle. This defaults to black.

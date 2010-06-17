@@ -13,7 +13,8 @@
 //
 // Currently, this will only understand the list of doodles configurations
 @interface ConfigParser : NSObject {
-	NSMutableDictionary *configuration_;
+ @private
+  NSMutableDictionary *configuration_;
 }
 
 // Read this after a parse to get the configuration

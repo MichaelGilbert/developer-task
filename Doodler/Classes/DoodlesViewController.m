@@ -39,29 +39,29 @@
 */
 
 - (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
+  [super viewWillAppear:animated];
 	
-	// Get the configuration from the delegate if we don't already have it
-	if (nil == configurations_)
-		configurations_ = [[delegate_ doodlesConfigrationsForDoodlesViewController:self] copy];
-		
-	// Create the views from the configuration if we don't already have any
-	if (nil == doodleViews_) {
-		doodleViews_ = [[NSMutableArray alloc] init];
-		for (DoodleConfig *doodleConfig in configurations_) {
-			// Make the view for this doodle
-			DoodleView *doodleView = [[[DoodleView alloc] initWithFrame:[doodleViewContainer_ frame]] autorelease];
-			[doodleView setConfig:doodleConfig];
-			[doodleViews_ addObject:doodleView];
-		}
-	}
+  // Get the configuration from the delegate if we don't already have it
+  if (nil == configurations_)
+    configurations_ = [[delegate_ doodlesConfigrationsForDoodlesViewController:self] copy];
+    
+  // Create the views from the configuration if we don't already have any
+  if (nil == doodleViews_) {
+    doodleViews_ = [[NSMutableArray alloc] init];
+    for (DoodleConfig *doodleConfig in configurations_) {
+      // Make the view for this doodle
+      DoodleView *doodleView = [[[DoodleView alloc] initWithFrame:[doodleViewContainer_ frame]] autorelease];
+      [doodleView setConfig:doodleConfig];
+      [doodleViews_ addObject:doodleView];
+    }
+  }
 
-	// If we don't yet have a current view, use the first one
-	if (NULL == currentDoodle_)
-		currentDoodle_ = [[doodleViews_ objectAtIndex:0] retain];
-	
-	// Add the current doodle view to the ui
-	[doodleViewContainer_ addSubview:currentDoodle_];
+  // If we don't yet have a current view, use the first one
+  if (NULL == currentDoodle_)
+    currentDoodle_ = [[doodleViews_ objectAtIndex:0] retain];
+
+  // Add the current doodle view to the ui
+  [doodleViewContainer_ addSubview:currentDoodle_];
 }
 
 /*
@@ -73,60 +73,60 @@
 */
 
 - (void)didReceiveMemoryWarning {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+  // Releases the view if it doesn't have a superview.
+  [super didReceiveMemoryWarning];
     
-    // Release any cached data, images, etc that aren't in use.
+  // Release any cached data, images, etc that aren't in use.
 }
 
 - (void)viewDidUnload {
-    [super viewDidUnload];
+  [super viewDidUnload];
 
-    [self setToolbar:nil];
-	[self setDoodleViewContainer:nil];
+  [self setToolbar:nil];
+  [self setDoodleViewContainer:nil];
 }
 
 
 - (void)dealloc {
-	[currentDoodle_ release];
-	[toolbar_ release];
-	[doodleViews_ release];
-	[doodleViewContainer_ release];
-    [super dealloc];
+  [currentDoodle_ release];
+  [toolbar_ release];
+  [doodleViews_ release];
+  [doodleViewContainer_ release];
+  [super dealloc];
 }
 
 - (IBAction)swapDoodle:(id)sender {
-	// You can't swap doodles i we only have one
-	if ([doodleViews_ count] < 2) return;
-	
-	// Get the next doodle
-	uint index = [doodleViews_ indexOfObject:currentDoodle_] + 1;
-	if (index == [doodleViews_ count]) index = 0;
-	DoodleView *nextDoodle = [doodleViews_ objectAtIndex:index];
+  // You can't swap doodles i we only have one
+  if ([doodleViews_ count] < 2) return;
 
-	// Change the doodle
-	[UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.75];
-	[UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:doodleViewContainer_ cache:YES];
-	[doodleViewContainer_ addSubview:nextDoodle];
-	[currentDoodle_ removeFromSuperview];
-	[UIView commitAnimations];
-	
-	// Update the current doodle pointer
-	[currentDoodle_ autorelease];
-	currentDoodle_ = [nextDoodle retain];	
+  // Get the next doodle
+  uint index = [doodleViews_ indexOfObject:currentDoodle_] + 1;
+  if (index == [doodleViews_ count]) index = 0;
+  DoodleView *nextDoodle = [doodleViews_ objectAtIndex:index];
+
+  // Change the doodle
+  [UIView beginAnimations:nil context:nil];
+  [UIView setAnimationDuration:0.75];
+  [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:doodleViewContainer_ cache:YES];
+  [doodleViewContainer_ addSubview:nextDoodle];
+  [currentDoodle_ removeFromSuperview];
+  [UIView commitAnimations];
+
+  // Update the current doodle pointer
+  [currentDoodle_ autorelease];
+  currentDoodle_ = [nextDoodle retain];	
 }
 
 - (IBAction)saveDoodle:(id)sender {
-	UIImageWriteToSavedPhotosAlbum([currentDoodle_ image], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+  UIImageWriteToSavedPhotosAlbum([currentDoodle_ image], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
 - (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
-	[[[[UIAlertView alloc] initWithTitle:@"Success"
-								 message:@"Your doodle has been saved"
-							    delegate:nil
-					   cancelButtonTitle:@"OK"
-					   otherButtonTitles:nil] autorelease] show];
+  [[[[UIAlertView alloc] initWithTitle:@"Success"
+                 message:@"Your doodle has been saved"
+                  delegate:nil
+             cancelButtonTitle:@"OK"
+             otherButtonTitles:nil] autorelease] show];
 }
 
 @end
