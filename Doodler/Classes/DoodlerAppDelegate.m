@@ -38,7 +38,7 @@
 
   // Display the window
   [window_ addSubview:[doodlesViewController_ view]];
-    [window_ makeKeyAndVisible];
+  [window_ makeKeyAndVisible];
   return YES;
 }
 
