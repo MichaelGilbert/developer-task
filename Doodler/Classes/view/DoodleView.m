@@ -35,20 +35,19 @@
 
 - (UIImage *) image {
 	// If we don't have an image already, use the config to create a black one with the correct background
-	if (nil == super.image) {
-		UIGraphicsBeginImageContext(self.frame.size);
-		CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), self.config.backgroundColor.CGColor);
-		CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, self.frame.size.width, self.frame.size.height));
-		super.image = UIGraphicsGetImageFromCurrentImageContext();
+	if (nil == [super image]) {
+		UIGraphicsBeginImageContext([self frame].size);
+		CGContextSetFillColorWithColor(UIGraphicsGetCurrentContext(), [[[self config] backgroundColor] CGColor]);
+		CGContextFillRect(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, [self frame].size.width, [self frame].size.height));
+		[super setImage:UIGraphicsGetImageFromCurrentImageContext()];
 		UIGraphicsEndImageContext();
-		
-		return super.image;
 	}
 	
-	return super.image;
+	return [super image];
 }
 
 - (DoodleConfig *)config {
+	// If we don't have a config set, create a defualt one and use that
 	if (nil == config_)
 		config_ = [[DoodleConfig alloc] init];
 	return config_;
@@ -64,14 +63,14 @@
 
 - (void) drawLineFrom:(CGPoint)src to:(CGPoint)dst {
 	// Create an image context with the current contents of the doodle
-	UIGraphicsBeginImageContext(self.frame.size);
-	[self.image drawInRect:self.bounds];
+	UIGraphicsBeginImageContext([self frame].size);
+	[self.image drawInRect:[self bounds]];
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	
 	// We want pretty lines
 	CGContextSetLineCap(context, kCGLineCapRound);
-	CGContextSetLineWidth(context, 2);
-	CGContextSetStrokeColorWithColor(context, self.config.strokeColor.CGColor);
+	CGContextSetLineWidth(context, 3);
+	CGContextSetStrokeColorWithColor(context, [[[self config] strokeColor] CGColor]);
 	
 	// Draw the line
 	CGContextBeginPath(context);
@@ -89,19 +88,21 @@
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+	// Get the start and end points of the touch
 	UITouch *touch = [touches anyObject];
 	CGPoint point = [touch locationInView:self];
-	
-	// Render it as a line
 	CGPoint lastPoint = [touch previousLocationInView:self];
 		
+	// Draw a line between them
 	[self drawLineFrom:lastPoint to:point];
 	
+	// We've moved so we don't need to draw a dot when we end this touch
 	touchNeedsDot_ = NO;
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
 	if (touchNeedsDot_) {
+		// If we didn't move, draw a dot where we tapped the screen
 		CGPoint point = [[touches anyObject] locationInView:self];
 		[self drawLineFrom:point to:point];
 	}

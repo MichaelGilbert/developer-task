@@ -61,7 +61,9 @@
 #pragma mark DoodlesViewControllerDelegate methods
 
 - (NSArray *)doodlesConfigrationsForDoodlesViewController:(DoodlesViewController *)controller {
-	return [configuration_ objectForKey:@"views"];
+	// Just return the views bit of the configuration - it's the array of DoodleConfig objects that
+	// the DoodleViewController is interested in.
+	return [configuration_ objectForKey:@"doodles"];
 }
 
 @end

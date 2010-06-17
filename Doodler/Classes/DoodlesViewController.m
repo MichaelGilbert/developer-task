@@ -51,7 +51,7 @@
 		for (DoodleConfig *doodleConfig in configurations_) {
 			// Make the view for this doodle
 			DoodleView *doodleView = [[[DoodleView alloc] initWithFrame:[doodleViewContainer_ frame]] autorelease];
-			doodleView.config = doodleConfig;
+			[doodleView setConfig:doodleConfig];
 			[doodleViews_ addObject:doodleView];
 		}
 	}
@@ -81,9 +81,9 @@
 
 - (void)viewDidUnload {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    self.toolbar = nil;
-	self.doodleViewContainer = nil;
+
+    [self setToolbar:nil];
+	[self setDoodleViewContainer:nil];
 }
 
 
@@ -121,7 +121,7 @@
 	UIImageWriteToSavedPhotosAlbum([currentDoodle_ image], self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
 }
 
-- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo: (void *) contextInfo {
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
 	[[[[UIAlertView alloc] initWithTitle:@"Success"
 								 message:@"Your doodle has been saved"
 							    delegate:nil

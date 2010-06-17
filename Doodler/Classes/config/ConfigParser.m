@@ -44,19 +44,19 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
 	
-	if ([elementName isEqualToString:@"views"]) {
+	if ([elementName isEqualToString:@"doodles"]) {
 		// Create the views array
-		[configuration_ setObject:[NSMutableArray array] forKey:@"views"];
-	} else if ([elementName isEqualToString:@"view"]) {
+		[configuration_ setObject:[NSMutableArray array] forKey:@"doodles"];
+	} else if ([elementName isEqualToString:@"doodle"]) {
 		// Get the views array from the config
-		NSMutableArray *views = [configuration_ objectForKey:@"views"];
+		NSMutableArray *doodles = [configuration_ objectForKey:@"doodles"];
 		
-		// If we have got a views array, add a view config to it
-		if (views) {
+		// If we have got a doodles array, add a DoodleConfig to it
+		if (doodles) {
 			DoodleConfig *config = [[[DoodleConfig alloc] init] autorelease];
 			config.backgroundColor = [UIColor colorWithHexString:[attributeDict objectForKey:@"backgroundColor"]];
 			config.strokeColor = [UIColor colorWithHexString:[attributeDict objectForKey:@"color"]];
-			[views addObject:config];
+			[doodles addObject:config];
 		}
 	}
 	
