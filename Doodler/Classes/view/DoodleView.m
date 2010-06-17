@@ -55,6 +55,9 @@
 
 - (void)willMoveToSuperview:(UIView *)newSuperview {
 	[super willMoveToSuperview:newSuperview];
+	
+	// If we are being added to a superview, make sure that we have the corrct background image
+	// setup.
 	[self image];
 }
 
