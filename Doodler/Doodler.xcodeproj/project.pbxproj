@@ -22,6 +22,7 @@
 		66BD733911C94B61007B2547 /* ConfigParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD733611C94B61007B2547 /* ConfigParser.m */; };
 		66BD733A11C94B61007B2547 /* DoodleConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD733811C94B61007B2547 /* DoodleConfig.m */; };
 		66BD73AF11C95434007B2547 /* DoodleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 66BD73AE11C95434007B2547 /* DoodleView.m */; };
+		66EA334611D7F5F800D30772 /* MainWindow-iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66EA334511D7F5F800D30772 /* MainWindow-iPad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		66BD733811C94B61007B2547 /* DoodleConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodleConfig.m; sourceTree = "<group>"; };
 		66BD73AD11C95434007B2547 /* DoodleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoodleView.h; sourceTree = "<group>"; };
 		66BD73AE11C95434007B2547 /* DoodleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoodleView.m; sourceTree = "<group>"; };
+		66EA334511D7F5F800D30772 /* MainWindow-iPad.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "MainWindow-iPad.xib"; path = "Resources-iPad/MainWindow-iPad.xib"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Doodler-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Doodler-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +96,7 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
+				66EA334411D7F5F600D30772 /* Resources-iPad */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -163,6 +166,14 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		66EA334411D7F5F600D30772 /* Resources-iPad */ = {
+			isa = PBXGroup;
+			children = (
+				66EA334511D7F5F800D30772 /* MainWindow-iPad.xib */,
+			);
+			name = "Resources-iPad";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -216,6 +227,7 @@
 				28F335F11007B36200424DE2 /* Doodles.xib in Resources */,
 				66BD70B511C82F7F007B2547 /* config.xml in Resources */,
 				66B7AA7C11CA1DB500A7C6A3 /* Default.png in Resources */,
+				66EA334611D7F5F800D30772 /* MainWindow-iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,6 +256,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -251,6 +264,8 @@
 				GCC_PREFIX_HEADER = Doodler_Prefix.pch;
 				INFOPLIST_FILE = "Doodler-Info.plist";
 				PRODUCT_NAME = Doodler;
+				SDKROOT = iphoneos4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -258,11 +273,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Doodler_Prefix.pch;
 				INFOPLIST_FILE = "Doodler-Info.plist";
 				PRODUCT_NAME = Doodler;
+				SDKROOT = iphoneos4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
